@@ -119,7 +119,7 @@ void pmc_maxclique::branch(
                         // ensure updated max is flushed
                         mc = C.size();
                         C_max = C;
-                        print_mc_info(C,sec);
+                        // print_mc_info(C,sec);
                         if (mc >= param_ub) {
                             not_reached_ub = false;
                             // cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
@@ -246,7 +246,7 @@ void pmc_maxclique::branch_dense(
                         // ensure updated max is flushed
                         mc = C.size();
                         C_max = C;
-                        print_mc_info(C,sec);
+                        // print_mc_info(C,sec);
                         if (mc >= param_ub) {
                             not_reached_ub = false;
                             // cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
