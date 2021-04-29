@@ -54,7 +54,7 @@ int pmcx_maxclique::search(pmc_graph& G, vector<int>& sol) {
     vector<Vertex> V;
     V.reserve(G.num_vertices());
     G.order_vertices(V,G,lb_idx,lb,vertex_ordering,decr_order);
-    cout << "|V| = " << V.size() <<endl;
+    // cout << "|V| = " << V.size() <<endl;
 
     vector<short> ind(G.num_vertices(),0);
     vector<int> es = G.get_edges_array();
@@ -94,7 +94,7 @@ int pmcx_maxclique::search(pmc_graph& G, vector<int>& sol) {
                 // dynamically reduce graph in a thread-safe manner
                 if ((get_time() - induce_time[omp_get_thread_num()]) > wait_time) {
                     G.reduce_graph( vs, es, pruned, G, i+lb_idx, mc);
-                    G.graph_stats(G, mc, i+lb_idx, sec);
+                    // G.graph_stats(G, mc, i+lb_idx, sec);
                     induce_time[omp_get_thread_num()] = get_time();
                 }
             }
@@ -208,7 +208,7 @@ int pmcx_maxclique::search_dense(pmc_graph& G, vector<int>& sol) {
     vector<Vertex> V;
     V.reserve(G.num_vertices());
     G.order_vertices(V,G,lb_idx,lb,vertex_ordering,decr_order);
-    cout << "|V| = " << V.size() <<endl;
+    // cout << "|V| = " << V.size() <<endl;
 
     vector<short> ind(G.num_vertices(),0);
     vector<int> es = G.get_edges_array();
@@ -253,7 +253,7 @@ int pmcx_maxclique::search_dense(pmc_graph& G, vector<int>& sol) {
                 // dynamically reduce graph in a thread-safe manner
                 if ((get_time() - induce_time[omp_get_thread_num()]) > wait_time) {
                     G.reduce_graph( vs, es, pruned, G, i+lb_idx, mc);
-                    G.graph_stats(G, mc, i+lb_idx, sec);
+                    // G.graph_stats(G, mc, i+lb_idx, sec);
                     induce_time[omp_get_thread_num()] = get_time();
                 }
             }
