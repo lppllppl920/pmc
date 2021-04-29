@@ -135,7 +135,7 @@ void pmc_graph::read_edges(const string& filename) {
     }
     vert_list.clear();
     vertex_degrees();
-    cout << "self-loops: " << self_edges <<endl;
+//     // cout << "self-loops: " << self_edges <<endl;
 }
 
 pmc_graph::pmc_graph(long long nedges, const int *ei, const int *ej, int offset) {
@@ -195,7 +195,7 @@ void pmc_graph::read_mtx(const string& filename) {
     getline(in, line);
     strcpy(data, line.c_str());
     if (sscanf(data, "%s %s %s %s %s", banner, mtx, crd, data_type, storage_scheme) != 5) {
-        cout << "ERROR: mtx header is missing" << endl;
+        // cout << "ERROR: mtx header is missing" << endl;
         return;
     }
 
@@ -224,8 +224,8 @@ void pmc_graph::read_mtx(const string& filename) {
             ridx--;
             cidx--;
 
-            if (ridx < 0 || ridx >= row)  cout << "sym-mtx error: " << ridx << " row " << row << endl;
-            if (cidx < 0 || cidx >= col)  cout << "sym-mtx error: " << cidx << " col " << col << endl;
+            if (ridx < 0 || ridx >= row)  // cout << "sym-mtx error: " << ridx << " row " << row << endl;
+            if (cidx < 0 || cidx >= col)  // cout << "sym-mtx error: " << cidx << " col " << col << endl;
             if (ridx == cidx)  continue;
 
             if (ridx > cidx) {
@@ -252,7 +252,7 @@ void pmc_graph::read_mtx(const string& filename) {
                     valueList[cidx].push_back(value);
                 }
             } else {
-                cout << "* WARNING: Found a nonzero in the upper triangular. ";
+                // cout << "* WARNING: Found a nonzero in the upper triangular. ";
                 break;
             }
         }
@@ -282,7 +282,7 @@ void pmc_graph::create_adj() {
         for (long long j = vertices[i]; j < vertices[i + 1]; j++ )
             adj[i][edges[j]] = true;
     }
-    cout << "Created adjacency matrix in " << get_time() - sec << " seconds" <<endl;
+//    // cout << "Created adjacency matrix in " << get_time() - sec << " seconds" <<endl;
 }
 
 
@@ -294,7 +294,7 @@ void pmc_graph::sum_vertex_degrees() {
         degree[v] = vertices[v+1] - vertices[v];
         sum += (degree[v] * degree[v]-1) / 2;
     }
-    cout << "sum of degrees: " << sum <<endl;
+//    // cout << "sum of degrees: " << sum <<endl;
 }
 
 void pmc_graph::vertex_degrees() {
@@ -355,7 +355,7 @@ void pmc_graph::update_degrees(int* &pruned, int& mc) {
         }
     }
     avg_degree = (double)edges.size() / p;
-    cout << ", pruned: " << p << endl;
+//    // cout << ", pruned: " << p << endl;
 }
 
 
@@ -427,7 +427,7 @@ void pmc_graph::update_kcores(int* &pruned) {
         }
         else kcore[v] = 0;
     }
-    cout << "[pmc: updated cores]  K: " << max_core <<endl;
+//    // cout << "[pmc: updated cores]  K: " << max_core <<endl;
 
     bin.clear();
     pos_tmp.clear();
@@ -608,8 +608,8 @@ void pmc_graph::degree_bucket_sort(bool desc) {
         }
     }
 
-    cout << "[pmc: sorting neighbors]  |E| = " << edges.size();
-    cout << ", |E_sorted| = " << tmp_edges.size() <<endl;
+//    // cout << "[pmc: sorting neighbors]  |E| = " << edges.size();
+//    // cout << ", |E_sorted| = " << tmp_edges.size() <<endl;
     edges = tmp_edges;
 }
 
