@@ -104,7 +104,7 @@ int pmcx_maxclique::search(pmc_graph& G, vector<int>& sol) {
 
     sol.resize(mc);
     for (int i = 0; i < C_max.size(); i++)  sol[i] = C_max[i];
-    G.print_break();
+    // G.print_break();
     return sol.size();
 }
 
@@ -264,7 +264,7 @@ int pmcx_maxclique::search_dense(pmc_graph& G, vector<int>& sol) {
 
     sol.resize(mc);
     for (int i = 0; i < C_max.size(); i++)  sol[i] = C_max[i];
-    G.print_break();
+    // G.print_break();
     return sol.size();
 }
 
